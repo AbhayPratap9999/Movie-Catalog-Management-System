@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Catalog Management System</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">Node.js + Express + MongoDB</p>
+        <h1>Movie Catalog Management System</h1>
+        <p class="subtitle">
+          Add, review, edit, and remove movies from your catalog with a simple
+          full-stack CRUD app.
+        </p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Add a Movie</h2>
+          <p>Fields marked with * are required.</p>
+        </div>
+
+        <form id="movie-form" class="movie-form">
+          <label>
+            Title *
+            <input type="text" name="title" required />
+          </label>
+          <label>
+            Director *
+            <input type="text" name="director" required />
+          </label>
+          <label>
+            Genre
+            <input type="text" name="genre" />
+          </label>
+          <label>
+            Release Year
+            <input type="number" name="releaseYear" min="1888" />
+          </label>
+          <label>
+            Rating
+            <input type="number" name="rating" min="0" max="10" step="0.1" />
+          </label>
+          <label>
+            Duration (minutes)
+            <input type="number" name="duration" min="1" />
+          </label>
+          <label>
+            Language
+            <input type="text" name="language" value="English" />
+          </label>
+
+          <button type="submit">Add Movie</button>
+        </form>
+        <p id="form-message" class="message" aria-live="polite"></p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Movie List</h2>
+          <button id="refresh-btn" class="secondary-button" type="button">
+            Refresh
+          </button>
+        </div>
+        <p id="list-message" class="message" aria-live="polite"></p>
+        <div id="movie-list" class="movie-list"></div>
+      </section>
+    </main>
+
+    <template id="movie-card-template">
+      <article class="movie-card">
+        <div class="movie-card-head">
+          <div>
+            <h3 class="movie-title"></h3>
+            <p class="movie-meta"></p>
+          </div>
+          <button class="delete-button" type="button">Delete</button>
+        </div>
+
+        <dl class="details-grid">
+          <div>
+            <dt>Genre</dt>
+            <dd class="movie-genre"></dd>
+          </div>
+          <div>
+            <dt>Release Year</dt>
+            <dd class="movie-year"></dd>
+          </div>
+          <div>
+            <dt>Language</dt>
+            <dd class="movie-language"></dd>
+          </div>
+          <div>
+            <dt>Created</dt>
+            <dd class="movie-created"></dd>
+          </div>
+        </dl>
+
+        <form class="inline-edit-form">
+          <label>
+            Rating
+            <input class="edit-rating" type="number" min="0" max="10" step="0.1" />
+          </label>
+          <label>
+            Duration
+            <input class="edit-duration" type="number" min="1" />
+          </label>
+          <button type="submit">Save Quick Edit</button>
+        </form>
+      </article>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
